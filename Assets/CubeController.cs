@@ -34,10 +34,18 @@ public class CubeController : MonoBehaviour
     }
 
     //地面もしくはキューブ同士が衝突したときに音を出す
-    void OnColliderEnter2D(Collision2D other)
+    void OnCollisionEnter2D(Collision2D collision2D)
     {
-        Debug.Log("キューブの音");
-        audioSource.Play();
+        if (collision2D.gameObject.tag == "groundTag" || collision2D.gameObject.tag == "CubeTag")
+        {
+            Debug.Log("キューブの音");
+            audioSource.Play();
+        }
+
+        else if (collision2D.gameObject.tag == "UnityChanTag")
+        {
+            Debug.Log("ユニティちゃんに衝突");
+        }
 
     }
 }
